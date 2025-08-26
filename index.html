@@ -156,6 +156,7 @@
             display: flex;
             gap: 1.5rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
         
         .btn {
@@ -169,6 +170,7 @@
             align-items: center;
             gap: 10px;
             border: 2px solid transparent;
+            cursor: pointer;
         }
         
         .btn-primary {
@@ -223,10 +225,12 @@
             gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            flex-wrap: wrap;
         }
         
         .pillar {
             flex: 1;
+            min-width: 300px;
             background: var(--secondary);
             border-radius: 15px;
             padding: 2.5rem;
@@ -274,3 +278,371 @@
             color: rgba(12, 13, 44, 0.05);
             z-index: 0;
         }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 5%;
+            background: var(--secondary);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            background: var(--accent);
+            color: var(--light);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: var(--light);
+            padding: 3rem 5% 1rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-link {
+            background: var(--accent);
+            color: var(--light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-link:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .pillars {
+                flex-direction: column;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .header-container {
+                padding: 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 0 3%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .mission {
+                padding: 4rem 3%;
+            }
+            
+            .features {
+                padding: 4rem 3%;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="logo-text">Desi<span>Truth</span>Lab</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#data">Data</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content fade-in-up">
+            <h1>Uncovering <span>Data-Backed Truths</span> for the Indian American Community</h1>
+            <p>Breaking stereotypes, revealing insights, and empowering decisions through rigorous research and transparent analysis for Indians and NRIs in America.</p>
+            <div class="cta-buttons">
+                <a href="#research" class="btn btn-primary">
+                    <i class="fas fa-microscope"></i>
+                    Explore Research
+                </a>
+                <a href="#data" class="btn btn-secondary">
+                    <i class="fas fa-database"></i>
+                    View Data
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="about">
+        <div class="section-header">
+            <h2>Our Mission</h2>
+            <p>We are committed to providing evidence-based insights that challenge assumptions and reveal the complex realities of Indian American experiences.</p>
+        </div>
+        
+        <div class="pillars">
+            <div class="pillar fade-in-up">
+                <div class="pillar-number">01</div>
+                <div class="pillar-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Research Excellence</h3>
+                <p>Conducting rigorous, peer-reviewed research using advanced statistical methods and comprehensive data sources to ensure accuracy and reliability.</p>
+            </div>
+            
+            <div class="pillar fade-in-up">
+                <div class="pillar-number">02</div>
+                <div class="pillar-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Transparency</h3>
+                <p>Open methodology, accessible data visualization, and clear communication of limitations to build trust and enable informed decision-making.</p>
+            </div>
+            
+            <div class="pillar fade-in-up">
+                <div class="pillar-number">03</div>
+                <div class="pillar-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community Impact</h3>
+                <p>Translating complex research into actionable insights that empower individuals, organizations, and policymakers within the Indian American community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="research">
+        <div class="section-header">
+            <h2>What We Offer</h2>
+            <p>Comprehensive research tools and insights tailored for the Indian American community</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>Economic Analysis</h3>
+                <p>Deep dives into income patterns, career trajectories, and economic mobility within the Indian American community.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Education Insights</h3>
+                <p>Research on educational outcomes, university admissions, and academic achievement patterns.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Housing & Geography</h3>
+                <p>Analysis of residential patterns, homeownership rates, and geographic distribution trends.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Health & Wellness</h3>
+                <p>Studies on health outcomes, healthcare access, and wellness trends in the community.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-vote-yea"></i>
+                </div>
+                <h3>Political Participation</h3>
+                <p>Research on voting patterns, political engagement, and civic participation levels.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h3>Cultural Dynamics</h3>
+                <p>Insights into cultural integration, identity formation, and intergenerational changes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2025 Desi Truth Lab. All rights reserved. | Committed to data integrity and community empowerment.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav');
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.width = '100%';
+                nav.style.background = 'var(--primary)';
+                nav.style.padding = '1rem';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in-up class
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
