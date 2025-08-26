@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desi Truth Lab | America - Data-Backed Truths for Indians & NRIs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         :root {
             --primary: #0C0D2C;
@@ -396,6 +398,20 @@
             .header-container {
                 padding: 0;
             }
+            
+            .subscription-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+            
+            .subscription-text h2 {
+                font-size: 2rem;
+            }
+            
+            .subscription-form-container {
+                padding: 2rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -421,6 +437,285 @@
             }
         }
         
+        /* Subscription Section */
+        .subscription {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a2d5a 100%);
+            padding: 6rem 5%;
+            color: var(--light);
+        }
+        
+        .subscription-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .subscription-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .subscription-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+        }
+        
+        .subscription-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+        
+        .benefits-list i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .subscription-note {
+            font-style: italic;
+            color: #ccc;
+            font-size: 1rem;
+        }
+        
+        .subscription-form-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .subscription-form h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            color: var(--light);
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            z-index: 2;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1);
+        }
+        
+        .form-group select {
+            cursor: pointer;
+        }
+        
+        .form-group select option {
+            background: var(--primary);
+            color: var(--light);
+        }
+        
+        .subscription-btn {
+            width: 100%;
+            margin-top: 1rem;
+            padding: 1rem;
+            font-size: 1.2rem;
+            background: var(--accent);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .subscription-btn:hover {
+            background: #e05e00;
+            transform: translateY(-2px);
+        }
+        
+        .privacy-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-top: 1rem;
+        }
+        
+        .privacy-note i {
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+        
+        /* YouTube Subscription Section */
+        .youtube-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .youtube-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .youtube-icon {
+            color: #FF0000;
+            font-size: 1.5rem;
+        }
+        
+        .youtube-header h4 {
+            color: var(--light);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .youtube-text {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+        
+        .youtube-checkbox {
+            display: none;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            cursor: pointer;
+            color: var(--light);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .youtube-checkbox:checked + .checkbox-label .checkmark {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .youtube-checkbox:checked + .checkbox-label .checkmark::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .youtube-link {
+            color: #FF0000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .youtube-link:hover {
+            color: #FF4444;
+            text-decoration: underline;
+        }
+        
+        .youtube-actions {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .btn-youtube {
+            background: #FF0000;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-youtube:hover {
+            background: #CC0000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+        
+        /* Success/Error Messages */
+        .form-message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .form-message.success {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            color: #4ade80;
+        }
+        
+        .form-message.error {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            color: #f87171;
+        }
+        
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -435,6 +730,15 @@
         
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .subscription-btn:hover {
+            animation: pulse 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -454,6 +758,7 @@
                     <li><a href="#research">Research</a></li>
                     <li><a href="#data">Data</a></li>
                     <li><a href="#insights">Insights</a></li>
+                    <li><a href="#subscribe">University Guide</a></li>
                     <li><a href="#community">Community</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
@@ -577,6 +882,57 @@
         </div>
     </section>
 
+    <!-- Subscription Section -->
+    <section class="subscription" id="subscribe">
+        <div class="subscription-container">
+            <div class="subscription-content">
+                <div class="subscription-text">
+                    <h2>🎓 Exclusive University Guide for Indian Students</h2>
+                    <p>Get our curated list of US universities with:</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check-circle"></i> High rankings & quality education</li>
+                        <li><i class="fas fa-check-circle"></i> Affordable tuition fees</li>
+                        <li><i class="fas fa-check-circle"></i> Strong scholarship opportunities</li>
+                        <li><i class="fas fa-check-circle"></i> High acceptance rates for Indian students</li>
+                    </ul>
+                    <p class="subscription-note">Join 10,000+ students who've already received our research-backed university recommendations.</p>
+                </div>
+                
+                <div class="subscription-form-container">
+                    <form class="subscription-form" id="subscriptionForm">
+                        <h3>Subscribe Now - It's Free!</h3>
+                        <div class="form-group">
+                            <i class="fas fa-envelope form-icon"></i>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-user form-icon"></i>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <i class="fas fa-graduation-cap form-icon"></i>
+                            <select id="studyLevel" name="studyLevel" required>
+                                <option value="">Select study level</option>
+                                <option value="undergraduate">Undergraduate (Bachelor's)</option>
+                                <option value="graduate">Graduate (Master's)</option>
+                                <option value="doctoral">Doctoral (PhD)</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary subscription-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Get University List
+                        </button>
+                        <p class="privacy-note">
+                            <i class="fas fa-shield-alt"></i>
+                            We respect your privacy. Unsubscribe anytime.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -591,57 +947,193 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const nav = document.querySelector('nav');
-            if (nav.style.display === 'block') {
-                nav.style.display = 'none';
-            } else {
-                nav.style.display = 'block';
-                nav.style.position = 'absolute';
-                nav.style.top = '100%';
-                nav.style.left = '0';
-                nav.style.width = '100%';
-                nav.style.background = 'var(--primary)';
-                nav.style.padding = '1rem';
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        // EmailJS Configuration - Replace with your actual values
+        const EMAILJS_CONFIG = {
+            publicKey: '_iSS0xJ3KGSpGRTyA',        // Replace with your EmailJS public key
+            serviceID: 'service_53j1o1o',        // Replace with your EmailJS service ID
+            templateID: '_iSS0xJ3KGSpGRTyA'       // Replace with your EmailJS template ID
         };
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Initialize EmailJS
+        (function() {
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+        })();
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            document.querySelector('.mobile-menu').addEventListener('click', function() {
+                const nav = document.querySelector('nav');
+                if (nav.style.display === 'block') {
+                    nav.style.display = 'none';
+                } else {
+                    nav.style.display = 'block';
+                    nav.style.position = 'absolute';
+                    nav.style.top = '100%';
+                    nav.style.left = '0';
+                    nav.style.width = '100%';
+                    nav.style.background = 'var(--primary)';
+                    nav.style.padding = '1rem';
                 }
             });
-        }, observerOptions);
 
-        // Observe all elements with fade-in-up class
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-            observer.observe(el);
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Form submission handling with EmailJS
+            document.getElementById('subscriptionForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const email = formData.get('email');
+                const name = formData.get('name');
+                const studyLevel = formData.get('studyLevel');
+                const youtubeSubscribed = formData.get('youtubeSubscribed') === 'on';
+                
+                // Remove any existing messages
+                const existingMessage = document.querySelector('.form-message');
+                if (existingMessage) {
+                    existingMessage.remove();
+                }
+                
+                // Create loading state
+                const submitBtn = document.querySelector('.subscription-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                // Check if EmailJS is configured
+                if (EMAILJS_CONFIG.publicKey === 'YOUR_PUBLIC_KEY') {
+                    // Show configuration message if not set up
+                    setTimeout(() => {
+                        showConfigMessage(name);
+                        resetForm();
+                        
+                        // Log data for manual processing
+                        console.log('📧 SUBSCRIPTION DATA TO SETUP EMAILJS:', {
+                            email: email,
+                            name: name,
+                            studyLevel: studyLevel,
+                            youtubeSubscribed: youtubeSubscribed,
+                            timestamp: new Date().toISOString()
+                        });
+                    }, 1000);
+                    return;
+                }
+                
+                // Send email using EmailJS
+                const templateParams = {
+                    to_email: 'your-email@example.com',  // Replace with your email
+                    from_name: name,
+                    from_email: email,
+                    study_level: studyLevel,
+                    youtube_subscribed: youtubeSubscribed ? 'Yes ✅' : 'No ❌',
+                    timestamp: new Date().toLocaleString(),
+                    message: `New university guide subscription request!
+                    
+Name: ${name}
+Email: ${email}
+Study Level: ${studyLevel}
+YouTube Subscribed: ${youtubeSubscribed ? 'Yes ✅' : 'No ❌'}
+Submitted: ${new Date().toLocaleString()}
+
+Please send them the university guide list!`
+                };
+                
+                emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, templateParams)
+                    .then(function(response) {
+                        console.log('✅ EmailJS Success:', response.status, response.text);
+                        showSuccessMessage(name);
+                        resetForm();
+                    })
+                    .catch(function(error) {
+                        console.error('❌ EmailJS Error:', error);
+                        showErrorMessage(error);
+                        resetForm();
+                    });
+                
+                function showSuccessMessage(userName) {
+                    const message = document.createElement('div');
+                    message.className = 'form-message success';
+                    message.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        Success! Welcome aboard, ${userName}! Check your email for the university guide.
+                        ${youtubeSubscribed ? '<br><i class="fab fa-youtube" style="color: #FF0000;"></i> Thanks for subscribing to our YouTube channel!' : ''}
+                    `;
+                    
+                    const form = document.getElementById('subscriptionForm');
+                    form.parentNode.insertBefore(message, form);
+                    message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                function showErrorMessage(error) {
+                    const message = document.createElement('div');
+                    message.className = 'form-message error';
+                    message.innerHTML = `
+                        <i class="fas fa-exclamation-circle"></i>
+                        Something went wrong. Please try again or contact us directly.
+                        <br><small>Error: ${error.text || 'Network error'}</small>
+                    `;
+                    
+                    const form = document.getElementById('subscriptionForm');
+                    form.parentNode.insertBefore(message, form);
+                }
+                
+                function showConfigMessage(userName) {
+                    const message = document.createElement('div');
+                    message.className = 'form-message success';
+                    message.innerHTML = `
+                        <i class="fas fa-info-circle"></i>
+                        Thanks ${userName}! Your submission has been logged. 
+                        <br><strong>📧 Setup EmailJS to receive automatic emails!</strong>
+                        <br><small>Check the browser console for your data.</small>
+                    `;
+                    
+                    const form = document.getElementById('subscriptionForm');
+                    form.parentNode.insertBefore(message, form);
+                    message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                
+                function resetForm() {
+                    document.getElementById('subscriptionForm').reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with fade-in-up class
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(el);
+            });
         });
     </script>
 </body>
